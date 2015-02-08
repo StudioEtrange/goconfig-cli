@@ -1,7 +1,5 @@
 package main
 
-
-
 import (
 	"fmt"
 	"github.com/Unknwon/goconfig"
@@ -25,17 +23,17 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "goconfig-cli"
 	app.Usage = "simple cli to manipulate ini file"
-	app.Before = func(c *cli.Context) error {
-		fileName = c.Args().Get(1)
-		return Init(fileName)
-	}
 	app.Commands = []cli.Command{
 		{
 			Name:      "getkey",
 			ShortName: "g",
 			Usage:     "get key value of a section",
+			Before: func(c *cli.Context) error {
+				fileName = c.Args().Get(0)
+				return Init(fileName)
+			},
 			Action: func(c *cli.Context) {
-				val := GetKey(c.Args().Get(1), c.Args().Get(2))
+				val := GetKey(c.Args().Get(2), c.Args().Get(3))
 				fmt.Print(val)
 			},
 		},
@@ -47,9 +45,13 @@ func main() {
 			Flags: []cli.Flag{
 				prettyFlag,
 			},
+			Before: func(c *cli.Context) error {
+				fileName = c.Args().Get(0)
+				return Init(fileName)
+			},
 			Action: func(c *cli.Context) {
 				goconfig.PrettyFormat = c.Bool("pretty")
-				DelKey(c.Args().Get(1), c.Args().Get(2))
+				DelKey(c.Args().Get(2), c.Args().Get(3))
 			},
 		},
 
@@ -60,9 +62,13 @@ func main() {
 			Flags: []cli.Flag{
 				prettyFlag,
 			},
+			Before: func(c *cli.Context) error {
+				fileName = c.Args().Get(0)
+				return Init(fileName)
+			},
 			Action: func(c *cli.Context) {
 				goconfig.PrettyFormat = c.Bool("pretty")
-				SetKey(c.Args().Get(1), c.Args().Get(2), c.Args().Get(3))
+				SetKey(c.Args().Get(2), c.Args().Get(3), c.Args().Get(4))
 			},
 		},
 	}
