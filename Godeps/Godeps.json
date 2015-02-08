@@ -1,0 +1,15 @@
+{
+	"ImportPath": "github.com/StudioEtrange/goconfig-cli",
+	"GoVersion": "go1.4.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Unknwon/goconfig",
+			"Rev": "5cfc02f2789e6e98d8546e40b29d907aedc4c590"
+		},
+		{
+			"ImportPath": "gopkg.in/codegangsta/cli.v1",
+			"Comment": "1.2.0",
+			"Rev": "565493f259bf868adb54d45d5f4c68d405117adf"
+		}
+	]
+}

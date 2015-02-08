@@ -1,8 +1,12 @@
 # goconfig-cli
 
+[![baby-gopher](https://raw.github.com/drnic/babygopher-site/gh-pages/images/babygopher-logo-small.png)](http://www.babygopher.org)
+
 command line tool reading ini file
 
 based on goconfig https://github.com/Unknwon/goconfig
+
+By default, it will preserve original end line characters of the ini file ("\n" or "\r\n" or "\r")
 
 see api-doc here : https://gowalker.org/github.com/StudioEtrange/goconfig-cli
 
@@ -29,5 +33,3 @@ On Windows:
 
 
 --pretty option : consider ini file having " = " as key/value separator instead of "="
-
-By default, it will preserve original end line characters of the ini file ("\n" or "\r\n" or "\r")
