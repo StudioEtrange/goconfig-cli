@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/Unknwon/goconfig"
 	"os"
@@ -8,12 +9,11 @@ import (
 	"gopkg.in/codegangsta/cli.v1"
 )
 
-var fileName string
+var configFileName string
 var configFile *goconfig.ConfigFile
 var modified bool = false
 
 func main() {
-
 	prettyFlag := cli.BoolFlag{
 		Name:  "pretty, p",
 		Usage: "active space around = character",
@@ -29,8 +29,7 @@ func main() {
 			ShortName: "g",
 			Usage:     "get key value of a section",
 			Before: func(c *cli.Context) error {
-				fileName = c.Args().Get(0)
-				return Init(fileName)
+				return Init(c.Args().Get(0))
 			},
 			Action: func(c *cli.Context) {
 				val := GetKey(c.Args().Get(2), c.Args().Get(3))
@@ -46,8 +45,7 @@ func main() {
 				prettyFlag,
 			},
 			Before: func(c *cli.Context) error {
-				fileName = c.Args().Get(0)
-				return Init(fileName)
+				return Init(c.Args().Get(0))
 			},
 			Action: func(c *cli.Context) {
 				goconfig.PrettyFormat = c.Bool("pretty")
@@ -63,8 +61,7 @@ func main() {
 				prettyFlag,
 			},
 			Before: func(c *cli.Context) error {
-				fileName = c.Args().Get(0)
-				return Init(fileName)
+				return Init(c.Args().Get(0))
 			},
 			Action: func(c *cli.Context) {
 				goconfig.PrettyFormat = c.Bool("pretty")
@@ -78,7 +75,7 @@ func main() {
 
 	// close app
 	if modified {
-		if err := goconfig.SaveConfigFile(configFile, fileName); err != nil {
+		if err := goconfig.SaveConfigFile(configFile, configFileName); err != nil {
 			os.Exit(1)
 		}
 	}
@@ -87,8 +84,43 @@ func main() {
 
 func Init(filename string) error {
 	var err error
+
+	configFileName = filename
+
+	if lineBreak := DetectLineEnding(filename); lineBreak != "" {
+		goconfig.LineBreak = lineBreak
+	}
+
 	configFile, err = goconfig.LoadConfigFile(filename)
 	return err
+}
+
+func DetectLineEnding(filename string) string {
+	f, err := os.Open(filename)
+	if err != nil {
+		return ""
+	}
+	defer f.Close()
+
+	buf := bufio.NewReader(f)
+	_, err = buf.ReadString('\r')
+	if err != nil {
+		buf.Reset(f)
+		_, err = buf.ReadString('\n')
+		if err != nil {
+			return ""
+		} else {
+			return "\n"
+		}
+	} else {
+		char, _ := buf.ReadByte()
+		if char == '\n' {
+			return "\r\n"
+		} else {
+			return "\r"
+		}
+	}
+
 }
 
 func GetKey(section, key string) string {

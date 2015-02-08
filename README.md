@@ -29,3 +29,5 @@ On Windows:
 
 
 --pretty option : consider ini file having " = " as key/value separator instead of "="
+
+By default, it will preserve original end line characters of the ini file ("\n" or "\r\n" or "\r")
