@@ -27,8 +27,8 @@ On Unix:
 On Windows:
 
 	%GOPATH%\bin\goconfig-cli.exe <ini-file> getkey <section> <key>
-	%GOPATH%\bin\goconfig-cli.exe <ini-file> [--pretty] setkey <section> <key> <value>
-	%GOPATH%\bin\goconfig-cli.exe <ini-file> [--pretty] delkey <section> <key>
+	%GOPATH%\bin\goconfig-cli.exe <ini-file> setkey [--pretty] <section> <key> <value>
+	%GOPATH%\bin\goconfig-cli.exe <ini-file> delkey [--pretty] <section> <key>
 
 
 
@@ -36,21 +36,23 @@ On Windows:
 
 
 
-# Debug and work on goconfig-cli
+# Debug and work on goconfig-cli in an isolated env
 
-	go get github.com/tools/godep
-	go get github.com/StudioEtrange/goconfig-cli
-	cd $GOPATH/src/github.com/StudioEtrange/goconfig-cli
-	$GOPATH/bin/godep restore
+
+	GOPATH="${PWD}/go-env"
+	GOPATH="$GOPATH" go get github.com/tools/godep
+	GOPATH="$GOPATH" go get github.com/StudioEtrange/goconfig-cli
+	cd "$GOPATH"/src/github.com/StudioEtrange/goconfig-cli
+	GOPATH="$GOPATH" "$GOPATH"/bin/godep restore
+
 
 see _godep_ : https://github.com/tools/godep
 
 
-# Cross Compile
+## Cross Compile
 
-	go get github.com/laher/goxc
-	cd $GOPATH/github.com/StudioEtrange/goconfig-cli
-	$GOPATH/bin/goxc
+	GOPATH="$GOPATH" go get github.com/laher/goxc
+	GOPATH="$GOPATH" "$GOPATH"/bin/goxc
 
 edit .goxc.json to tweak cross compiled builds
 
