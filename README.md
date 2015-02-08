@@ -36,7 +36,9 @@ On Windows:
 
 
 
-# Debug and work on goconfig-cli in an isolated env
+# Work on goconfig-cli
+
+## Prepare an isolated workspace
 
 
 	GOPATH="${PWD}/go-env"
