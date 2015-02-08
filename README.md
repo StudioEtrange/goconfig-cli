@@ -33,3 +33,25 @@ On Windows:
 
 
 --pretty option : consider ini file having " = " as key/value separator instead of "="
+
+
+# Cross Compile
+
+	go get github.com/laher/goxc
+	cd $GOPATH/github.com/StudioEtrange/goconfig-cli
+	$GOPATH/bin/goxc
+
+edit .goxc.json to tweak cross compiled builds
+
+see _goxc_ : http://github.com/laher/goxc
+
+# Debug and work on goconfig-cli
+
+	go get github.com/tools/godep
+	go get github.com/StudioEtrange/goconfig-cli
+	cd $GOPATH/src/github.com/StudioEtrange/goconfig-cli
+	$GOPATH/bin/godep restore
+
+see _godep_ : https://github.com/tools/godep
+
+
