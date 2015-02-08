@@ -30,10 +30,7 @@ On Windows:
 	%GOPATH%\bin\goconfig-cli.exe <ini-file> setkey [--pretty] <section> <key> <value>
 	%GOPATH%\bin\goconfig-cli.exe <ini-file> delkey [--pretty] <section> <key>
 
-
-
 --pretty option : consider ini file having " = " as key/value separator instead of "="
-
 
 
 # Work on goconfig-cli
