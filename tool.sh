@@ -32,7 +32,7 @@ case $ACTION in
 		go install goconfig-cli
 
 		mkdir -p $RELEASE_DIR
-		cp -f $WORKSPACE/bin/goconfig-cli $_CURRENT_FILE_DIR/$RELEASE_DIR
+		cp -f $WORKSPACE/bin/goconfig-cli $RELEASE_DIR
 	;;
 
 	clean)

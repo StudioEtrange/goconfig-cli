@@ -45,13 +45,13 @@ On Windows:
 
 	./tool.sh build
 
-goconfig-cli binary is in release folder
+goconfig-cli binary built for your current-platform is in release folder
 
 	./tool.sh clean
 
 remove any release and temporary workspace
 
-	./tool.sj prepare-cross
+	./tool.sh prepare-cross
 	./tool.sh build-cross
 
 cross-compiled version of goconfig-cli are in release folder
@@ -59,5 +59,11 @@ cross-compiled version of goconfig-cli are in release folder
 NOTE : _godep_ is used to stick version of dependencies
 
 NOTE : _gonative_ and _gox_ are used for cross-compile
+* see : https://github.com/tools/godep
 * see : https://github.com/mitchellh/gox
 * see : https://github.com/inconshreveable/gonative
+
+
+## On Windows
+
+_soon_
