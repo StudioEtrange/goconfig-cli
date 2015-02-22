@@ -40,7 +40,7 @@ On Windows:
 
 ## On Unix
 
-NOTE : _godep_ is used to stick version of dependencies
+* NOTE : _godep_ is used to stick version of dependencies
 
 	git clone https://github.com/StudioEtrange/goconfig-cli
 	cd goconfig-cli
@@ -59,5 +59,5 @@ remove any release and temporary workspace
 cross-compiled version of goconfig-cli are in release folder
 
 NOTE : _gonative_ and _gox_ are used for cross-compile
-see : https://github.com/mitchellh/gox
-see : https://github.com/inconshreveable/gonative
+* see : https://github.com/mitchellh/gox
+* see : https://github.com/inconshreveable/gonative
