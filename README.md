@@ -2,13 +2,12 @@
 
 [![baby-gopher](https://raw.github.com/drnic/babygopher-site/gh-pages/images/babygopher-logo-small.png)](http://www.babygopher.org)
 
-command line tool reading ini file
-
-based on goconfig https://github.com/Unknwon/goconfig
+Command line tool reading ini file based on _goconfig_ https://github.com/Unknwon/goconfig
 
 By default, it will preserve original end line characters of the ini file ("\n" or "\r\n" or "\r")
 
-see api-doc here : https://gowalker.org/github.com/StudioEtrange/goconfig-cli
+* Can be cross-compiled in this repository or just installed with standard go get
+* see api-doc here : https://gowalker.org/github.com/StudioEtrange/goconfig-cli
 
 # Install
 
