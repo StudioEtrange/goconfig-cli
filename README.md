@@ -14,6 +14,8 @@ see api-doc here : https://gowalker.org/github.com/StudioEtrange/goconfig-cli
 
 	go get github.com/StudioEtrange/goconfig-cli
 
+NOTE : the dependencies are not locked down, as if you built from github-source (see below)
+
 # Usage
 
 On Unix:
@@ -33,27 +35,29 @@ On Windows:
 --pretty option : consider ini file having " = " as key/value separator instead of "="
 
 
-# Work on goconfig-cli
-
-## Prepare an isolated workspace
+# Build from github-source
 
 
-	GOPATH="${PWD}/go-env"
-	GOPATH="$GOPATH" go get github.com/tools/godep
-	GOPATH="$GOPATH" go get github.com/StudioEtrange/goconfig-cli
-	cd "$GOPATH"/src/github.com/StudioEtrange/goconfig-cli
-	GOPATH="$GOPATH" "$GOPATH"/bin/godep restore
+## On Unix
 
+NOTE : _godep_ is used to stick version of dependencies
 
-see _godep_ : https://github.com/tools/godep
+	git clone https://github.com/StudioEtrange/goconfig-cli
+	cd goconfig-cli
 
+	./tool.sh build
 
-## Cross Compile
+goconfig-cli binary is in release folder
 
-	GOPATH="$GOPATH" go get github.com/laher/goxc
-	GOPATH="$GOPATH" "$GOPATH"/bin/goxc
+	./tool.sh clean
 
-edit .goxc.json to tweak cross compiled builds
+remove any release and temporary workspace
 
-see _goxc_ : http://github.com/laher/goxc
+	./tool.sj prepare-cross
+	./tool.sh build-cross
 
+cross-compiled version of goconfig-cli are in release folder
+
+NOTE : _gonative_ and _gox_ are used for cross-compile
+see : https://github.com/mitchellh/gox
+see : https://github.com/inconshreveable/gonative

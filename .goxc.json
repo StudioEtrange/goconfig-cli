@@ -1,8 +1,0 @@
-{
-	"TasksExclude": [
-		"deb",
-		"deb-dev"
-	],
-	"BuildConstraints": "linux,386,amd64 windows,386 darwin",
-	"ConfigVersion": "0.9"
-}
