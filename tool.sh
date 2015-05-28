@@ -58,7 +58,7 @@ case $ACTION in
   		go get github.com/mitchellh/gox
   		#$GOX -build-toolchain
 
-        echo "** install godep and restore goconfig-cli dependencies"
+        	echo "** install godep and restore goconfig-cli dependencies"
 		go get github.com/tools/godep
 		$GODEP restore
 
@@ -70,7 +70,7 @@ case $ACTION in
 
 		mkdir -p $RELEASE_DIR
 		cd $RELEASE_DIR
-		PATH=$GOTOOLCHAIN/bin/:$PATH $GOX -verbose -osarch="windows/386 windows/amd64 linux/386 linux/amd64 darwin/386 darwin/amd64" goconfig-cli
+		PATH=$GOTOOLCHAIN/go/bin/:$PATH $GOX -verbose -osarch="windows/386 windows/amd64 linux/386 linux/amd64 darwin/386 darwin/amd64" goconfig-cli
 
 
 	;;
