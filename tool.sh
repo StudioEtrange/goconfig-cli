@@ -4,7 +4,7 @@ _CURRENT_FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 GOVER=$(go version | cut -d" " -f3 | cut -d"o" -f2)
 
-WORKSPACE=$_CURRENT_FILE_DIR/Godeps/_workspace
+WORKSPACE=$_CURRENT_FILE_DIR/workspace
 GODEP=$WORKSPACE/bin/godep
 GOXC=$WORKSPACE/bin/goxc
 GOX=$WORKSPACE/bin/gox
@@ -58,7 +58,7 @@ case $ACTION in
   		go get github.com/mitchellh/gox
   		#$GOX -build-toolchain
 
-        	echo "** install godep and restore goconfig-cli dependencies"
+        echo "** install godep and restore goconfig-cli dependencies"
 		go get github.com/tools/godep
 		$GODEP restore
 
@@ -77,8 +77,9 @@ case $ACTION in
 
 	*)
 		echo "Usage :"
-		echo "$0 build : build goconfig-cli"
-		echo "$0 build-cross : build cross-plaform goconfig-cli"
-		echo "$0 clean : clean workspace"
+		echo "$0 build : build goconfig-cli for current platform"
+		echo "$0 prepare-cross : prepare a cross-platform chain -- use once only berfore build-cross"
+		echo "$0 build-cross : build cross-platform goconfig-cli for all plaform"
+		echo "$0 clean : clean everything"
 	;;
 esac
